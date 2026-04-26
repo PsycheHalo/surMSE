@@ -1,6 +1,6 @@
 [project]
 name="surMSE"
-version="0.0.1"
+version="0.0.2"
 authors=[{name="Psyche Halo", email="Psyche@WinsGod.com"},]
 description="surMSE is a A loss function @PyTorch, that allows the target to be exceeded in the target direction. "
 readme = "README.md"
