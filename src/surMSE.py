@@ -11,7 +11,7 @@ def surMSE(input,target,dim=None,scale=True,eps=1e-8,meanOut=True,haveBatch=True
     targetNormSquare=targetNorm.square()
     dot=(input*target).sum(dim=dim,keepdim=False)
     
-    loss=(inputNormSquare*targetNormSquare-dot.square())+(targetNormSquare-dot).clamp(min=0)
+    loss=(inputNormSquare*targetNormSquare-dot.square())+(targetNormSquare-dot).clamp(min=0).square()
     if scale:
         loss=loss/(targetNorm+eps)
     else:
