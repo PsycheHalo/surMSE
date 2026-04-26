@@ -1,0 +1,15 @@
+[project]
+name="surMSE"
+version="0.0.1"
+authors=[{name="Psyche Halo", email="Psyche@WinsGod.com"},]
+description="surMSE is a A loss function @PyTorch, that allows the target to be exceeded in the target direction. "
+readme = "README.md"
+requires-python=">=3.8"
+classifiers=["Programming Language :: Python :: 3", "Operating System :: OS Independent",]
+dependencies=["torch >= 1.7.0",]
+keywords = ["surMSE", "Loss", "PyTorch", "AI", "neural", "NN", "classification", "categories",]
+[project.urls]
+Homepage="https://github.com/PsycheHalo/surMSE"
+Issues="https://github.com/PsycheHalo/surMSE/issues"
+[metadata]
+license_expression = "MPL-2.0"
