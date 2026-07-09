@@ -15,11 +15,11 @@ pip install surMSE
 ```python
 from surMSE import surMSE
 ...
-loss=surMSE(input,target,dim=None,scale=True,eps=1e-8,meanOut=True,haveBatch=True)
+loss=surMSE(input,target,dim=None,scale=True,eps=1e-8,meanOut=True,haveBatch=True,protect=None)
 ```
 
 dim表示在哪些维度上计算损失,一般开启除Batch维之外的全部维度.设定为None则自动计算.      
   dim=None,haveBatch=True时,自动排除首维.dim=None,haveBatch=False时在全部维度上计算.      
 scale控制是否根据target模长控制对应样本损失的增益,如果开启,将通过target模长给损失加权;如果关闭,在一半空间上将等效于MSE.    
-meanOut控制是否在返回前使用平均的方法合并"dim"参数指定外的剩余维度.如果不开启,取决于数据维度和dim设置,返回的tensor将不一定只有一个元素.
-  
+meanOut控制是否在返回前使用平均的方法合并"dim"参数指定外的剩余维度.如果不开启,取决于数据维度和dim设置,返回的tensor将不一定只有一个元素.    
+protect柔性防止损失值超越protect值的样本对总损失造成过大影响.设置为0关闭此功能,设置为None自动设置当前批次损失值的平均值作为protect值.  
