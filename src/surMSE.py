@@ -2,7 +2,7 @@ import torch
 import math
 
 
-def surMSE(input,target,dim=None,scale=True,eps=1e-8,meanOut=True,haveBatch=True):
+def surMSE(input,target,dim=None,scale=True,eps=1e-8,meanOut=True,haveBatch=True,protect=None):
     if dim is None and haveBatch:
         dim=tuple(range(1,len(torch.broadcast_shapes(input.shape,target.shape))))
     
@@ -16,6 +16,12 @@ def surMSE(input,target,dim=None,scale=True,eps=1e-8,meanOut=True,haveBatch=True
         loss=loss/(targetNorm+eps)
     else:
         loss=loss/(targetNormSquare+eps)
+
+    if protect is None: 
+        with torch.no_grad():
+            protect=loss.mean()
+    if protect>0:
+        loss=((loss*protect+(protect**2)).sqrt()-protect)*2
     
     if meanOut:
         return loss.mean()
